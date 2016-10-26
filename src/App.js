@@ -21,7 +21,7 @@ class App extends Component {
         },
         {
           subject: 'This Is My Second Week Blog Post',
-          text: 'Our first week we checked out this material',
+          text: 'Our second week we checked out this material',
           link_1: 'https://www.ft.com',
           link_text_1: 'This is the first weeks story',
           link_2: 'https://www.ft.com',
@@ -31,7 +31,7 @@ class App extends Component {
         },
         {
           subject: 'This Is My Third Week Blog Post',
-          text: 'Our first week we checked out this material',
+          text: 'Our third week we checked out this material',
           link_1: 'https://www.ft.com',
           link_text_1: 'This is the third weeks story',
           link_2: 'https://www.ft.com',
