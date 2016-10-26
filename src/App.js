@@ -12,12 +12,12 @@ class App extends Component {
         {
           subject: 'This Is My First Week Blog Post',
           text: 'Our first week we checked out this material',
-          link_1: 'https://www.ft.com',
-          link_text_1: 'This is the first weeks story',
-          link_2: 'https://www.ft.com',
-          link_text_2: 'This is the second first weeks story',
-          link_3: 'https://www.ft.com',
-          link_text_3: 'This is the third first weeks story'
+          links: [ link: 'https://www.ft.com',
+                  link_text: 'This is the first weeks story'],
+                [ link: 'https://www.ft.com',
+                  link_text: 'This is the second first weeks story'],
+                [ link: 'https://www.ft.com',
+                  link_text: 'This is the third first weeks story']
         },
         {
           subject: 'This Is My Second Week Blog Post',
