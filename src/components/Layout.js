@@ -1,14 +1,14 @@
 import React from "react"
 import Header from "./Header";
 import Intro from "./Intro";
-import Post from "./Post";
+import Week from "./Week";
 
 export default class Layout extends React.Component {
   render(){
     let posts = [];
     let postsObjs = this.props.pagedata.posts;
     for (let i = 0; i < postsObjs.length; i++) {
-      posts.push(<Post postdata={postsObjs[i]}/>)
+      posts.push(<Week postdata={postsObjs[i]}/>)
     };
 
     return (
