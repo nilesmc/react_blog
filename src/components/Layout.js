@@ -1,19 +1,42 @@
 import React from "react"
 import Header from "./Header";
 import Intro from "./Intro";
-import Week from "./Week";
+import Post from "./Post";
+import MakePost from "./MakePost";
 
 export default class Layout extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { posts: this.props.pagedata.posts }
+    this.updatePosts = this.updatePosts.bind(this);
+  }
+
+  addPosts(){
+    let newPost = {
+      subject: 'New Entry',
+      text: '',
+      links: [ { link: '', link_text: '' }, { link: '', link_text: '' }, { link: '', link_text: '' } ]
+    };
+    this.setState(this.state.postsArr.push(newPost));
+  }
+
+  updatePosts(newPosts) {
+    // re render this posts
+    this.setState({ posts: newPosts });
+  }
+
   render(){
-    let postsObjs = this.props.pagedata.posts
+    let postsObjs = this.state.posts;
     const postsMap = postsObjs.map((post, idx) => {
-      return (<Week key={idx} postdata={postsObjs[idx]}/>)
+      return (<Post key={idx} postdata={postsObjs[idx]}/>)
     })
 
     return (
       <div>
         <Header headerdata={this.props.pagedata.header_title} />
         <Intro introdata={this.props.pagedata.intro} />
+        <MakePost postdata={this.props.pagedata} addPosts={this.addPosts} />
         {postsMap}
       </div>
     );

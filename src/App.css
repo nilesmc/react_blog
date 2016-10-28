@@ -10,7 +10,7 @@
 .App-header {
   background-color: #222;
   height: 150px;
-  padding: 20px;
+  padding: 28px;
   color: white;
 }
 
@@ -26,5 +26,14 @@
 .blog-post-link {
   color: white;
   padding: 12px;
+}
+
+.newPost {
+  background-color: #222;
+  color:  white;
+  font-size: 13px;
+  border: none;
+  padding: 12px;
+  margin:  12px;
 }
 
