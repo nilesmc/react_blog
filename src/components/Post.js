@@ -22,7 +22,7 @@ export default class Post extends React.Component {
     return (
       <div className="App-header">
         <h3>{postObj.subject}</h3>
-        <Input inputdata={postObj.subject} updatePostObj={}/>
+        <Input inputdata={postObj.subject} updatePostObj={this.updatePosts}/>
         <p>{postObj.text}</p>
         {linksMap}
       </div>
