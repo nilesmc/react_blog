@@ -1,6 +1,6 @@
 import React from "react"
 import Link from "./Links";
-import Input from "./Inputs"
+// import Input from "./Inputs"
 
 export default class Post extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ export default class Post extends React.Component {
     return (
       <div className="App-header">
         <h3>{postObj.subject}</h3>
-        <Input inputdata={postObj.subject} updatePostObj={this.updatePosts}/>
+        {/*<Input inputdata={postObj.subject} updatePostObj={this.updatePosts}/>*/}
         <p>{postObj.text}</p>
         {linksMap}
       </div>
