@@ -10,6 +10,7 @@ export default class Layout extends React.Component {
     super(props);
     this.state = { posts: this.props.pagedata.posts }
     this.updatePosts = this.updatePosts.bind(this);
+    this.addPosts = this.addPosts.bind(this);
   }
 
   addPosts(){
@@ -18,7 +19,11 @@ export default class Layout extends React.Component {
       text: '',
       links: [ { link: '', link_text: '' }, { link: '', link_text: '' }, { link: '', link_text: '' } ]
     };
-    this.setState(this.state.postsArr.push(newPost));
+    // debugger
+    let postsArr = this.state.posts;
+    postsArr.push(newPost);
+    this.setState( { posts: postsArr } );
+    // debugger
   }
 
   updatePosts(newPosts) {
@@ -27,7 +32,9 @@ export default class Layout extends React.Component {
   }
 
   render(){
+    // debugger
     let postsObjs = this.state.posts;
+    console.log(postsObjs);
     const postsMap = postsObjs.map((post, idx) => {
       return (<Post key={idx} postdata={postsObjs[idx]}/>)
     })
