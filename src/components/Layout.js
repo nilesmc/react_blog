@@ -2,7 +2,8 @@ import React from "react"
 import Header from "./Header";
 import Intro from "./Intro";
 import Post from "./Post";
-import MakePost from "./MakePost";
+import CreatePost from "./CreatePost";
+import PostForm from "./PostForm";
 
 export default class Layout extends React.Component {
 
@@ -19,32 +20,31 @@ export default class Layout extends React.Component {
       text: '',
       links: [ { link: '', link_text: '' }, { link: '', link_text: '' }, { link: '', link_text: '' } ]
     };
-    // debugger
     let postsArr = this.state.posts;
     postsArr.push(newPost);
-    this.setState( { posts: postsArr } );
-    // debugger
+    this.updatePosts ({ posts: postsArr } );
   }
 
   updatePosts(newPosts) {
-    // re render this posts
-    this.setState({ posts: newPosts });
+    this.setState(newPosts);
   }
 
   render(){
-    // debugger
     let postsObjs = this.state.posts;
-    console.log(postsObjs);
     const postsMap = postsObjs.map((post, idx) => {
-      return (<Post key={idx} postdata={postsObjs[idx]}/>)
+      return (<Post key={idx} position={idx} postdata={postsObjs[idx]}/>)
+    })
+    const postFormsMap = postsObjs.map((post, idx) => {
+      return (<PostForm key={idx} position={idx} postdata={postsObjs[idx]} />)
     })
 
     return (
       <div>
         <Header headerdata={this.props.pagedata.header_title} />
         <Intro introdata={this.props.pagedata.intro} />
-        <MakePost postdata={this.props.pagedata} addPosts={this.addPosts} />
+        <CreatePost postdata={this.props.pagedata} addPosts={this.addPosts} />
         {postsMap}
+        {postFormsMap}
       </div>
     );
   }
