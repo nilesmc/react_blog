@@ -3,21 +3,20 @@ import React from "react"
 export default class Input extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { inputData: this.props.inputdata};
     this.updateInput = this.updateInput.bind(this);
   }
 
-  updateInput (){
-    debugger
-    this.props.updatePost(this.state.postsArr);
+  updateInput(e){
+    const data = e.target.value;
+    const field = this.props.inputfield;
+    this.props.updatepost(data, field);
   }
 
   render(){
     return (
       <input
         type="text"
-        placeholder="edit me"
-        value={this.state.inputdata}
+        value={this.props.inputdata}
         onChange={this.updateInput}
       />
     );

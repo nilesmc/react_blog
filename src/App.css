@@ -18,6 +18,12 @@
   font-size: large;
 }
 
+.App-section {
+  background-color: #222;
+  padding: 28px;
+  color: white;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -37,3 +43,6 @@
   margin:  12px;
 }
 
+.hidden {
+  display: none;
+}

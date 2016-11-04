@@ -81,7 +81,7 @@ class App extends Component {
             },
             {
               link_text: 'Atom keyboard shortcuts',
-              link: '',
+              link: 'http://www.ft.com',
             },
           ]
         },
