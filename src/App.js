@@ -126,6 +126,21 @@ class App extends Component {
               link: 'https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi',
             }
           ]
+        },
+        {
+          subject: 'This Is My Fifth Week Blog Post',
+          text: 'Our third week we checked out this material',
+          links: [
+            {
+              link_text: 'Forms: Controlled and Uncontrolled Inputs',
+              link: 'https://facebook.github.io/react/docs/forms.html#uncontrolled-components',
+            },
+            {
+              link_text: 'React For Everyone #13 - Controlled Inputs',
+              link: 'https://www.youtube.com/watch?v=BvtQMxekmH0',
+            },
+
+          ]
         }
       ]
     }
