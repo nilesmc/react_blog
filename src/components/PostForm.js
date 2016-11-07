@@ -16,7 +16,7 @@ export default class PostForm extends React.Component {
           updatedPost.subject = data;
           break;
       case 'text':
-          updatedPost.subject = data;
+          updatedPost.text = data;
           break;
       }
     debugger
@@ -35,7 +35,9 @@ export default class PostForm extends React.Component {
     const linksMap = linksObj.map((link, idx) => {
       return (
         <div key={idx}>
+          <label>Link Text</label>
           <Input inputdata={link.link_text} updatePostObj={this.updateLink} />
+          <label>Link</label>
           <Input inputdata={link.link} updatePostObj={this.updateLink} />
         </div>
       );
@@ -44,8 +46,10 @@ export default class PostForm extends React.Component {
       <div className="App-section">
         <h3>Edit Post</h3>
         <form>
+          <label>Subject</label>
           <Input inputdata={this.props.postdata.subject} inputfield='subject' updatepost={this.updatePost.bind(this)}/>
           <br></br>
+          <label>Summary Text</label>
           <Input inputdata={this.props.postdata.text} inputfield='text' updatepost={this.updatePost.bind(this)}/>
           <br></br>
           <div>
