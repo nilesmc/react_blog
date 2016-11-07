@@ -13,12 +13,26 @@ export default class Input extends React.Component {
   }
 
   render(){
-    return (
-      <input
+    let input;
+    if (this.props.inputfield !== 'text') {
+      input = (
+       <input
         type="text"
         value={this.props.inputdata}
         onChange={this.updateInput}
-      />
+        />
+      );
+    } else {
+      input = (
+        <textarea
+          value={this.props.inputdata}
+          onChange={this.updateInput}
+        />
+      );
+
+    }
+    return (
+      input
     );
   }
 }
