@@ -18,7 +18,7 @@ export default class Layout extends React.Component {
     let newPost = {
       subject: 'New Entry',
       text: '',
-      links: [ { link: '', link_text: '' }, { link: '', link_text: '' }, { link: '', link_text: '' } ]
+      links: [ { link: '', link_text: '' } ]
     };
     let postsArr = this.state.posts;
     postsArr.push(newPost);
@@ -35,11 +35,11 @@ export default class Layout extends React.Component {
     let postsObjs = this.state.posts;
     let updatePosts = this.updatePosts;
     const postsMap = postsObjs.map((post, idx) => {
-      return (<Post key={idx} position={idx} postdata={postsObjs[idx]}/>)
-    });
-
-    const postFormsMap = postsObjs.map((post, idx) => {
-      return (<PostForm key={idx} position={idx} postdata={postsObjs[idx]} updatePosts={updatePosts} />)
+      return ( <div key={idx}>
+                <Post position={idx} postdata={postsObjs[idx]} updatePosts={updatePosts}/>
+                <PostForm position={idx} postdata={postsObjs[idx]} updatePosts={updatePosts} />
+              </div>
+             )
     });
 
     return (
@@ -48,7 +48,6 @@ export default class Layout extends React.Component {
         <Intro introdata={this.props.pagedata.intro} />
         <CreatePost postdata={this.props.pagedata} addPosts={this.addPosts} />
         {postsMap}
-        {postFormsMap}
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import React from "react"
-import Link from "./Links";
 import Input from "./Inputs"
 import LinkInput from "./LinkInputs"
 
@@ -8,6 +7,7 @@ export default class PostForm extends React.Component {
     super(props);
     this.state = { post: this.props.postdata };
     this.updatePostObj = this.updatePostObj.bind(this);
+    this.addLink = this.addLink.bind(this);
   }
 
   updatePost(data, field, idx) {
@@ -21,19 +21,35 @@ export default class PostForm extends React.Component {
           updatedPost.text = data;
           break;
       case 'link':
-          updatedPost.links[] = data
+          if (idx !== undefined) {
+            updatedPost.links[idx].link = data
+          }
+          break;
+      case 'link_text':
+          if (idx !== undefined) {
+            updatedPost.links[idx].link_text = data
+          }
+          break;
+      default:
+        break;
       }
     this.setState({ post: updatedPost });
   }
 
-  updateLink(link) {
-    // re render this posts
-    this.setState({ posts: link });
+  addLink(e){
+    e.preventDefault();
+    let current = this.state.post;
+    let newLink = { link_text: '', link: ''};
+    current.links.push(newLink);
+    this.setState({ posts: current });
   }
 
   updatePostObj(e) {
     e.preventDefault();
-    this.props.updatePosts(this.state.post, this.props.position);
+    let post = this.state.post;
+    post.editing = false;
+    this.props.updatePosts(post, this.props.position);
+    this.setState(post);
   }
 
   render(){
@@ -41,12 +57,12 @@ export default class PostForm extends React.Component {
     const linksMap = linksObj.map((link, idx) => {
       return (
         <div key={idx}>
-          <LinkInput linkdata={link} linkindex={idx} updatepost={ this.updatePost.bind(this) } />
+          <LinkInput linkdata={link} linkidx={idx} updatepost={ this.updatePost.bind(this) } />
         </div>
       );
     })
     return (
-      <div className="App-section">
+      <div className={`App-section ${ this.state.post.editing ? '' : 'hidden'} `} >
         <h3>Edit Post</h3>
         <form>
           <label>Subject</label>
@@ -58,6 +74,11 @@ export default class PostForm extends React.Component {
           <div>
             { linksMap }
           </div>
+          <button
+            onClick={this.addLink}
+            className='updatePost'>
+            Add Link
+          </button>
           <button
             onClick={this.updatePostObj}
             className='updatePost'>

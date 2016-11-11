@@ -1,5 +1,4 @@
 import React from "react"
-import Input from "./Inputs"
 
 export default class LinkInput extends React.Component {
   constructor(props) {
@@ -8,10 +7,11 @@ export default class LinkInput extends React.Component {
   }
 
   updateLink(e){
-    debugger
-    const data = e.target.value;
-    const field = this.props.inputfield;
-    this.props.updatepost(data, field);
+    e.preventDefault();
+    let data = e.target.value;
+    let field = e.target.dataset.linkpart;
+    let idx = this.props.linkidx;
+    this.props.updatepost(data, field, idx);
   }
 
   render(){
@@ -20,9 +20,19 @@ export default class LinkInput extends React.Component {
     return (
       <div key={index} >
         <label>Link Text</label>
-        <Input inputdata={link.link_text} updatepost={this.props.updateLink(link, index)} />
+        <input
+          type="text"
+          data-linkpart={'link_text'}
+          value={link.link_text}
+          onChange={this.updateLink.bind(this)}
+        />
         <label>Link</label>
-        <Input inputdata={link.link} updatepost={this.props.updateLink(link, index)} />
+        <input
+          type='text'
+          data-linkpart={'link'}
+          value={link.link}
+          onChange={this.updateLink.bind(this)}
+        />
       </div>
     );
   }
