@@ -22,21 +22,25 @@ export default class Layout extends React.Component {
     };
     let postsArr = this.state.posts;
     postsArr.push(newPost);
-    this.updatePosts ({ posts: postsArr } );
+    this.setState ({ posts: postsArr } );
   }
 
-  updatePosts(newPosts) {
-    this.setState(newPosts);
+  updatePosts(updatedPost, index) {
+    let currentPosts = this.state.posts;
+    currentPosts[index] = updatedPost;
+    this.setState(currentPosts);
   }
 
   render(){
     let postsObjs = this.state.posts;
+    let updatePosts = this.updatePosts;
     const postsMap = postsObjs.map((post, idx) => {
       return (<Post key={idx} position={idx} postdata={postsObjs[idx]}/>)
-    })
+    });
+
     const postFormsMap = postsObjs.map((post, idx) => {
-      return (<PostForm key={idx} position={idx} postdata={postsObjs[idx]} />)
-    })
+      return (<PostForm key={idx} position={idx} postdata={postsObjs[idx]} updatePosts={updatePosts} />)
+    });
 
     return (
       <div>

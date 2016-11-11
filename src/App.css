@@ -46,3 +46,21 @@
 .hidden {
   display: none;
 }
+
+label {
+  padding: 6px;
+}
+
+input {
+  width: 225px;
+}
+
+.updatePost {
+  background-color: #fff;
+  color:  #222;
+  font-weight: bold;
+  font-size: 13px;
+  border: none;
+  padding: 12px;
+  margin:  12px;
+}
