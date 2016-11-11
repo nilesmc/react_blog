@@ -1,14 +1,16 @@
 import React from "react"
 import Link from "./Links";
 import Input from "./Inputs"
+import LinkInput from "./LinkInputs"
 
 export default class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { post: this.props.postdata };
+    this.updatePostObj = this.updatePostObj.bind(this);
   }
 
-  updatePost(data, field) {
+  updatePost(data, field, idx) {
     // re render this posts
     let updatedPost = this.state.post;
     switch (field) {
@@ -18,8 +20,9 @@ export default class PostForm extends React.Component {
       case 'text':
           updatedPost.text = data;
           break;
+      case 'link':
+          updatedPost.links[] = data
       }
-    debugger
     this.setState({ post: updatedPost });
   }
 
@@ -28,17 +31,17 @@ export default class PostForm extends React.Component {
     this.setState({ posts: link });
   }
 
+  updatePostObj(e) {
+    e.preventDefault();
+    this.props.updatePosts(this.state.post, this.props.position);
+  }
 
   render(){
-    var postObj = this.props.postdata;
-    let linksObj = postObj.links;
+    let linksObj = this.props.postdata.links;
     const linksMap = linksObj.map((link, idx) => {
       return (
         <div key={idx}>
-          <label>Link Text</label>
-          <Input inputdata={link.link_text} updatePostObj={this.updateLink} />
-          <label>Link</label>
-          <Input inputdata={link.link} updatePostObj={this.updateLink} />
+          <LinkInput linkdata={link} linkindex={idx} updatepost={ this.updatePost.bind(this) } />
         </div>
       );
     })
@@ -55,6 +58,11 @@ export default class PostForm extends React.Component {
           <div>
             { linksMap }
           </div>
+          <button
+            onClick={this.updatePostObj}
+            className='updatePost'>
+            Save Post
+          </button>
         </form>
       </div>
     );

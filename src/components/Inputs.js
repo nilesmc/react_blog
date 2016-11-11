@@ -29,7 +29,6 @@ export default class Input extends React.Component {
           onChange={this.updateInput}
         />
       );
-
     }
     return (
       input
