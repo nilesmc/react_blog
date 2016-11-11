@@ -9,7 +9,7 @@ export default class Layout extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { posts: this.props.pagedata.posts }
+    this.state = { posts: this.props.pageData.posts }
     this.updatePosts = this.updatePosts.bind(this);
     this.addPosts = this.addPosts.bind(this);
   }
@@ -36,17 +36,17 @@ export default class Layout extends React.Component {
     let updatePosts = this.updatePosts;
     const postsMap = postsObjs.map((post, idx) => {
       return ( <div key={idx}>
-                <Post position={idx} postdata={postsObjs[idx]} updatePosts={updatePosts}/>
-                <PostForm position={idx} postdata={postsObjs[idx]} updatePosts={updatePosts} />
+                <Post position={idx} postData={postsObjs[idx]} updatePosts={updatePosts}/>
+                <PostForm position={idx} postData={postsObjs[idx]} updatePosts={updatePosts} />
               </div>
              )
     });
 
     return (
       <div>
-        <Header headerdata={this.props.pagedata.header_title} />
-        <Intro introdata={this.props.pagedata.intro} />
-        <CreatePost postdata={this.props.pagedata} addPosts={this.addPosts} />
+        <Header headerData={this.props.pageData.header_title} />
+        <Intro introData={this.props.pageData.intro} />
+        <CreatePost postData={this.props.pageData} addPosts={this.addPosts} />
         {postsMap}
       </div>
     );

@@ -5,13 +5,12 @@ import LinkInput from "./LinkInputs"
 export default class PostForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { post: this.props.postdata };
+    this.state = { post: this.props.postData };
     this.updatePostObj = this.updatePostObj.bind(this);
     this.addLink = this.addLink.bind(this);
   }
 
   updatePost(data, field, idx) {
-    // re render this posts
     let updatedPost = this.state.post;
     switch (field) {
       case 'subject':
@@ -53,7 +52,7 @@ export default class PostForm extends React.Component {
   }
 
   render(){
-    let linksObj = this.props.postdata.links;
+    let linksObj = this.props.postData.links;
     const linksMap = linksObj.map((link, idx) => {
       return (
         <div key={idx}>
@@ -66,10 +65,10 @@ export default class PostForm extends React.Component {
         <h3>Edit Post</h3>
         <form>
           <label>Subject</label>
-          <Input inputdata={this.props.postdata.subject} inputfield='subject' updatepost={this.updatePost.bind(this)}/>
+          <Input inputdata={this.props.postData.subject} inputfield='subject' updatepost={this.updatePost.bind(this)}/>
           <br></br>
           <label>Summary Text</label>
-          <Input inputdata={this.props.postdata.text} inputfield='text' updatepost={this.updatePost.bind(this)}/>
+          <Input inputdata={this.props.postData.text} inputfield='text' updatepost={this.updatePost.bind(this)}/>
           <br></br>
           <div>
             { linksMap }

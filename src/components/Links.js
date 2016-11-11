@@ -1,9 +1,7 @@
 import React from "react"
 
-export default class Link extends React.Component {
-  render(){
-    return (
-      <a className='blog-post-link' href={this.props.linkdata.link}>{this.props.linkdata.link_text}</a>
-    );
-  }
-}
+const Link = ({linkdata}) => (
+  <a className='blog-post-link' href={linkdata.link}>{linkdata.link_text}</a>
+)
+
+export default Link
