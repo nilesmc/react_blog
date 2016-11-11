@@ -4,24 +4,22 @@ import Link from "./Links";
 export default class Post extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = { postsArr: this.props.postdata.posts};
     this.stopEditing = this.stopEditing.bind(this);
   }
 
   updatePosts(newPosts) {
-    // re render this posts
     this.setState({ posts: newPosts });
   }
 
   stopEditing(e){
     e.preventDefault();
-    let post = this.props.postdata;
+    let post = this.props.postData;
     post.editing = true;
     this.props.updatePosts(post, this.props.position);
   }
 
   render(){
-    var postObj = this.props.postdata;
+    var postObj = this.props.postData;
     let linksObj = postObj.links;
     const linksMap = linksObj.map((post, idx) => {
       return (<Link key={idx} linkdata={linksObj[idx]}/>);

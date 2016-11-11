@@ -39,7 +39,7 @@ class App extends Component {
               link: 'http://tech.co/dc-is-the-top-city-for-women-in-tech-2016-02'
             },
             {
-              link_text: 'JavaScrip: Understanding the Weird Parts',
+              link_text: "JavaScript': Understanding the Weird Parts",
               link: 'https://www.udemy.com/understand-javascript/?couponCode=OCT1202&siteID=Kzz30XxWgII-loSkKDchAkcHj_nnwiIBHQ&LSNPUBID=Kzz30XxWgII'
             },
             {
@@ -152,7 +152,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Layout pagedata={this.state} />
+        <Layout pageData={this.state} />
       </div>
     );
   }
