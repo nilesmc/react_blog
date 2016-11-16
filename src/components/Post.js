@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "./Links";
 
-export default class Post extends React.Component {
+class Post extends React.Component {
   constructor(props) {
     super(props);
     this.stopEditing = this.stopEditing.bind(this);
@@ -38,3 +38,11 @@ export default class Post extends React.Component {
     );
   }
 }
+
+Post.propTypes = {
+  position: React.PropTypes.number.isRequired,
+  postData: React.PropTypes.object.isRequired,
+  updatePosts: React.PropTypes.func.isRequired
+}
+
+export default Post;

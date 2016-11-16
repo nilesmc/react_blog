@@ -2,7 +2,7 @@ import React from "react"
 import Input from "./Inputs"
 import LinkInput from "./LinkInputs"
 
-export default class PostForm extends React.Component {
+class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { post: this.props.postData };
@@ -56,7 +56,7 @@ export default class PostForm extends React.Component {
     const linksMap = linksObj.map((link, idx) => {
       return (
         <div key={idx}>
-          <LinkInput linkdata={link} linkidx={idx} updatepost={ this.updatePost.bind(this) } />
+          <LinkInput linkData={link} linkIdx={idx} updatePost={ this.updatePost.bind(this) } />
         </div>
       );
     })
@@ -65,10 +65,10 @@ export default class PostForm extends React.Component {
         <h3>Edit Post</h3>
         <form>
           <label>Subject</label>
-          <Input inputdata={this.props.postData.subject} inputfield='subject' updatepost={this.updatePost.bind(this)}/>
+          <Input inputData={this.props.postData.subject} inputField='subject' updatePost={this.updatePost.bind(this)}/>
           <br></br>
           <label>Summary Text</label>
-          <Input inputdata={this.props.postData.text} inputfield='text' updatepost={this.updatePost.bind(this)}/>
+          <Input inputData={this.props.postData.text} inputField='text' updatePost={this.updatePost.bind(this)}/>
           <br></br>
           <div>
             { linksMap }
@@ -88,3 +88,9 @@ export default class PostForm extends React.Component {
     );
   }
 }
+
+PostForm.propTypes = {
+  postData: React.PropTypes.object.isRequired
+}
+
+export default PostForm;

@@ -10,12 +10,12 @@ export default class LinkInput extends React.Component {
     e.preventDefault();
     let data = e.target.value;
     let field = e.target.dataset.linkpart;
-    let idx = this.props.linkidx;
-    this.props.updatepost(data, field, idx);
+    let idx = this.props.linkIdx;
+    this.props.updatePost(data, field, idx);
   }
 
   render(){
-    let link = this.props.linkdata;
+    let link = this.props.linkData;
     let index = this.props.index;
     return (
       <div key={index} >

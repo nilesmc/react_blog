@@ -1,6 +1,6 @@
 import React from "react"
 
-export default class Input extends React.Component {
+class Input extends React.Component {
   constructor(props) {
     super(props);
     this.updateInput = this.updateInput.bind(this);
@@ -8,24 +8,24 @@ export default class Input extends React.Component {
 
   updateInput(e){
     const data = e.target.value;
-    const field = this.props.inputfield;
+    const field = this.props.inputField;
     this.props.updatepost(data, field);
   }
 
   render(){
     let input;
-    if (this.props.inputfield !== 'text') {
+    if (this.props.inputField !== 'text') {
       input = (
        <input
         type="text"
-        value={this.props.inputdata}
+        value={this.props.inputData}
         onChange={this.updateInput}
         />
       );
     } else {
       input = (
         <textarea
-          value={this.props.inputdata}
+          value={this.props.inputData}
           onChange={this.updateInput}
         />
       );
@@ -35,3 +35,11 @@ export default class Input extends React.Component {
     );
   }
 }
+
+Input.propTypes = {
+  inputField: React.PropTypes.string.isRequired,
+  inputData: React.PropTypes.string,
+  updatePosts: React.PropTypes.func
+}
+
+export default Input

@@ -8,4 +8,8 @@ const Header = ({headerData}) => (
   </div>
 );
 
+Header.propTypes = {
+  headerData: React.PropTypes.string.isRequired
+}
+
 export default Header
