@@ -5,7 +5,7 @@ import Post from "./Post";
 import CreatePost from "./CreatePost";
 import PostForm from "./PostForm";
 
-export default class Layout extends React.Component {
+class Layout extends React.Component {
 
   constructor(props) {
     super(props);
@@ -52,3 +52,9 @@ export default class Layout extends React.Component {
     );
   }
 }
+
+Layout.propTypes = {
+  pageData: React.PropTypes.object.isRequired
+}
+
+export default Layout;
