@@ -47,6 +47,10 @@
   display: none;
 }
 
+.editing {
+  background-color: #A9A9A9;
+}
+
 label {
   padding: 6px;
 }

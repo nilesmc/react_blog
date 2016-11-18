@@ -35,11 +35,19 @@ class Layout extends React.Component {
     let postsObjs = this.state.posts;
     let updatePosts = this.updatePosts;
     const postsMap = postsObjs.map((post, idx) => {
-      return ( <div key={idx}>
+    let postForm = '';
+    if (post.editing) {
+        postForm = (<PostForm
+                      position={idx}
+                      postData={postsObjs[idx]}
+                      updatePosts={updatePosts}
+                    />)
+    }
+    return ( <div key={idx}>
                 <Post position={idx} postData={postsObjs[idx]} updatePosts={updatePosts}/>
-                <PostForm position={idx} postData={postsObjs[idx]} updatePosts={updatePosts} />
+                {postForm}
               </div>
-             )
+            )
     });
 
     return (
