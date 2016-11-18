@@ -25,7 +25,7 @@ class Post extends React.Component {
       return (<Link key={idx} linkdata={linksObj[idx]}/>);
     })
     return (
-      <div className="App-section">
+      <div className={`App-section ${ postObj.editing ? 'editing' : ''} `}>
         <h3>{postObj.subject}</h3>
         <button
           onClick={this.stopEditing}

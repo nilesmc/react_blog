@@ -61,7 +61,7 @@ class PostForm extends React.Component {
       );
     })
     return (
-      <div className={`App-section ${ this.state.post.editing ? '' : 'hidden'} `} >
+      <div className={`App-section editing`} >
         <h3>Edit Post</h3>
         <form>
           <label>Subject</label>
