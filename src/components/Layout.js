@@ -23,12 +23,14 @@ class Layout extends React.Component {
     let postsArr = this.state.posts;
     postsArr.push(newPost);
     this.setState ({ posts: postsArr } );
+    this.props.updateAppState(postsArr);
   }
 
   updatePosts(updatedPost, index) {
     let currentPosts = this.state.posts;
     currentPosts[index] = updatedPost;
     this.setState(currentPosts);
+    this.props.updateAppState(currentPosts);
   }
 
   render(){

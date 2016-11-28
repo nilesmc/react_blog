@@ -9,7 +9,7 @@ class Input extends React.Component {
   updateInput(e){
     const data = e.target.value;
     const field = this.props.inputField;
-    this.props.updatepost(data, field);
+    this.props.updatePost(data, field);
   }
 
   render(){
