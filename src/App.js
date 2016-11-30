@@ -40,7 +40,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    // debugger
     this.ref  = base.syncState(`/posts`, {
       context: this,
       state: 'posts',
@@ -48,8 +47,6 @@ class App extends Component {
         this.setState({loading: false})
       }
     });
-    // debugger
-
   }
 
   updateAppState(currentPosts) {
