@@ -6,41 +6,6 @@ import CreatePost from "./CreatePost";
 import Menu from "./Menu";
 import PostForm from "./PostForm";
 
-var styles = {
-  bmBurgerButton: {
-    position: 'fixed',
-    width: '36px',
-    height: '30px',
-    left: '36px',
-    top: '36px'
-  },
-  bmBurgerBars: {
-    background: '#373a47'
-  },
-  bmCrossButton: {
-    height: '24px',
-    width: '24px'
-  },
-  bmCross: {
-    background: '#bdc3c7'
-  },
-  bmMenu: {
-    background: '#373a47',
-    padding: '2.5em 1.5em 0',
-    fontSize: '1.15em'
-  },
-  bmMorphShape: {
-    fill: '#373a47'
-  },
-  bmItemList: {
-    color: '#b8b7ad',
-    padding: '0.8em'
-  },
-  bmOverlay: {
-    background: 'rgba(0, 0, 0, 0.3)'
-  }
-}
-
 class Layout extends React.Component {
 
   constructor(props) {
@@ -58,7 +23,10 @@ class Layout extends React.Component {
     };
     let postsArr = this.state.posts;
     postsArr.push(newPost);
-    this.setState ({ posts: postsArr } );
+    this.setState ({
+                    posts: postsArr,
+                    openMenu: false
+                  } );
     this.props.updateAppState(postsArr);
   }
 
@@ -89,8 +57,8 @@ class Layout extends React.Component {
     });
 
     return (
-      <div id="outer-container">
-        <Menu radiumConfig={{ userAgent: 'all' }} styles= { styles } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } />
+      <div id="outer-container" >
+        <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } />
         <main id="page-wrap">
           <Header headerData={this.props.pageData.header_title} />
           <Intro introData={this.props.pageData.intro} />
