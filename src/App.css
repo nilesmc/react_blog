@@ -69,4 +69,46 @@ input {
   margin:  12px;
 }
 
+.rbn-overlay {
+  background: rgba(50, 55, 50, .8)
+}
 
+.rbn-burger-button {
+  background: transparent;
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 36px;
+  top: 36px;
+}
+
+.rbn-burger-bars {
+  background: #444;
+}
+
+.rbn-cross {
+  background: #bdc3c7;
+}
+
+.rbn-menu {
+  background: #444;
+  font-size: 1.15em;
+  padding: 2.5em 1.5em 0;
+  width: 120px;
+  float: right;
+}
+
+.rbn-menu a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+.rbn-menu a:hover,
+.rbn-menu a:focus {
+  color: gray;
+}
+
+.rbn-item-list a {
+  padding: 0.8em;
+}
