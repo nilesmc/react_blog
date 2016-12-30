@@ -50,7 +50,7 @@ class App extends Component {
   }
 
   updateAppState(currentPosts) {
-    debugger
+    // debugger
     this.setState({posts: currentPosts});
   }
 
