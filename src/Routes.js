@@ -2,6 +2,8 @@ import React from 'react';
 import { Router, Route } from 'react-router';
 
 import App from './App.js';
+import Layout from './components/Layout';
+
 import NotFound from './components/NotFound';
 import Login from './components/Login';
 import Contact from './components/Contact';

@@ -58,14 +58,9 @@ class Layout extends React.Component {
     });
 
     return (
-      <div id="outer-container" >
-        <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } />
-        <main id="page-wrap">
-          <Header headerData={this.props.pageData.header_title} />
-          <Intro introData={this.props.pageData.intro} />
-          <CreatePost postData={this.props.pageData} addPosts={this.addPosts} />
-          {postsMap}
-        </main>
+      <div className='blogLayout'>
+        <CreatePost postData={this.props.pageData} addPosts={this.addPosts} />
+        {postsMap}
       </div>
     );
   }
