@@ -1,7 +1,4 @@
 import React from "react"
-import Header from "./Header";
-import Intro from "./Intro";
-import Menu from "./Menu";
 
 import Post from "./Post";
 import CreatePost from "./CreatePost";
