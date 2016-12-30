@@ -1,6 +1,4 @@
-import React from "react"
-import Header from "./Header";
-import Menu from "./Menu";
+import React from 'react'
 
 class Login extends React.Component {
 
@@ -31,36 +29,29 @@ class Login extends React.Component {
 
   render(){
     return (
-      <div className="App">
-        <div id="outer-container" >
-          <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } />
-          <main id="page-wrap">
-              <Header headerData={'Login'} />
-              <br></br>
-              <form>
-                <label>Username</label>
-                <input
-                  type="text"
-                  onChange={this.updateUsername}
-                  value={'username'}
-                  />
-                <br></br>
-                <label>Password</label>
-                <input
-                  type="password"
-                  onChange={this.updatePassword}
-                  value={'password'}
-                />
-                <br></br>
-                <button
-                  onClick={this.updateLogin}
-                  className='updatePost'>
-                  Login
-                </button>
+      <div className="Login">
+        <form>
+          <label>Username</label>
+          <input
+            type="text"
+            onChange={this.updateUsername}
+            value={'username'}
+            />
+          <br></br>
+          <label>Password</label>
+          <input
+            type="password"
+            onChange={this.updatePassword}
+            value={'password'}
+          />
+          <br></br>
+          <button
+            onClick={this.updateLogin}
+            className='updatePost'>
+            Login
+          </button>
 
-              </form>
-          </main>
-        </div>
+        </form>
       </div>
     );
   }
