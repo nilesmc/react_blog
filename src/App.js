@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Layout from "./components/Layout";
+import BlogLayout from "./components/BlogLayout";
 import Rebase from 're-base';
 import './App.css';
 
@@ -17,7 +17,7 @@ var authHandler = function(error, user) {
   if(error) {
     console.log(error, user);
   } else {
-    console.log('success')
+    console.log('success');
   }
 };
 
@@ -29,6 +29,7 @@ base.authWithPassword({
 
 class App extends Component {
   constructor(){
+    debugger
     super();
     this.state = {
       header_title: 'This is my React Blog',
@@ -56,8 +57,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        { this.state.loading === true ? <h3> LOADING... </h3> : <Layout updateAppState={ this.updateAppState.bind(this) } pageData={this.state} /> }
+      <div>
+        { this.state.loading === true ? <h3> LOADING... </h3> : <BlogLayout updateAppState={ this.updateAppState.bind(this) } pageData={this.state} /> }
       </div>
     );
   }

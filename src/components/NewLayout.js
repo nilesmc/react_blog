@@ -6,13 +6,10 @@ import Menu from "./Menu";
 class NewLayout extends React.Component {
 
   constructor(props) {
-    debugger
     super(props);
   }
 
   render(){
-    debugger
-
     return (
       <div className="App">
         <div id="outer-container" >
@@ -20,6 +17,7 @@ class NewLayout extends React.Component {
           <main id="page-wrap">
           <Header headerData={'This is my React Blog'} />
           <Intro introData={'Documenting My ReactJS Journey'} />
+          {this.props.children}
           </main>
         </div>
       </div>
@@ -28,7 +26,7 @@ class NewLayout extends React.Component {
 }
 
 NewLayout.propTypes = {
-  pageData: React.PropTypes.object.isRequired
+  // pageData: React.PropTypes.object.isRequired
 }
 
 export default NewLayout;
