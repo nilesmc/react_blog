@@ -7,7 +7,7 @@ import Post from "./Post";
 import CreatePost from "./CreatePost";
 import PostForm from "./PostForm";
 
-class Layout extends React.Component {
+class BlogLayout extends React.Component {
 
   constructor(props) {
     super(props);
@@ -66,8 +66,8 @@ class Layout extends React.Component {
   }
 }
 
-Layout.propTypes = {
+BlogLayout.propTypes = {
   pageData: React.PropTypes.object.isRequired
 }
 
-export default Layout;
+export default BlogLayout;
