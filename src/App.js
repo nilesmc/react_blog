@@ -22,7 +22,7 @@ var authHandler = function(error, user) {
 };
 
 base.authWithPassword({
-  email    : 'bobtony@firebase.com',
+  email    : 'mcgiver.niles@gmail.com',
   password : 'correcthorsebatterystaple'
 }, authHandler);
 
