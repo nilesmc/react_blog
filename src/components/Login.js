@@ -11,21 +11,21 @@ class Login extends React.Component {
     debugger
     const data = e.target.value;
     const field = this.props.inputField;
-    this.props.updatePost(data, field);
+    this.props.updateLogin(data, field);
   }
 
   updatePassword(e){
     debugger
     const data = e.target.value;
     const field = this.props.inputField;
-    this.props.updatePost(data, field);
+    this.props.updateLogin(data, field);
   }
 
   updateUserName(e){
     debugger
     const data = e.target.value;
     const field = this.props.inputField;
-    this.props.updatePost(data, field);
+    this.props.updateLogin(data, field);
   }
 
   render(){
@@ -36,14 +36,14 @@ class Login extends React.Component {
           <input
             type="text"
             onChange={this.updateUsername}
-            value={'username'}
+            defaultValue={'Enter Your Username'}
             />
           <br></br>
           <label>Password</label>
           <input
             type="password"
             onChange={this.updatePassword}
-            value={'password'}
+            defaultValue={'Enter Your Password'}
           />
           <br></br>
           <button

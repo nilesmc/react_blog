@@ -13,6 +13,10 @@ class BlogLayout extends React.Component {
     this.addPosts = this.addPosts.bind(this);
   }
 
+  componentWillReceiveProps(nextprops){
+    this.state = { posts: nextprops.pageData.posts }
+  }
+
   addPosts(){
     let newPost = {
       subject: 'New Entry',
@@ -36,25 +40,31 @@ class BlogLayout extends React.Component {
   }
 
   render(){
+
     let postsObjs = this.state.posts;
     let updatePosts = this.updatePosts;
-    const postsMap = postsObjs.map((post, idx) => {
-    let postForm = '';
-    if (post.editing) {
-        postForm = (<PostForm
-                      position={idx}
-                      postData={postsObjs[idx]}
-                      updatePosts={updatePosts}
-                    />)
+    let postsMap = '';
+    if (this.props.pageData.loading ) {
+      postsMap = <h3> LOADING... </h3>
+    } else {
+      postsMap = postsObjs.map((post, idx) => {
+      let postForm = '';
+      if (post.editing) {
+          postForm = (<PostForm
+                        position={idx}
+                        postData={postsObjs[idx]}
+                        updatePosts={updatePosts}
+                      />)
+      }
+      return ( <div key={idx}>
+                  <Post position={idx} postData={postsObjs[idx]} updatePosts={updatePosts}/>
+                  {postForm}
+                </div>
+              )
+      });
     }
-    return ( <div key={idx}>
-                <Post position={idx} postData={postsObjs[idx]} updatePosts={updatePosts}/>
-                {postForm}
-              </div>
-            )
-    });
-
     return (
+
       <div className='blogLayout'>
         <CreatePost postData={this.props.pageData} addPosts={this.addPosts} />
         {postsMap}
