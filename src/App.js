@@ -21,12 +21,6 @@ var authHandler = function(error, user) {
   }
 };
 
-base.authWithPassword({
-  email    : 'mcgiver.niles@gmail.com',
-  password : 'correcthorsebatterystaple'
-}, authHandler);
-
-
 class App extends Component {
   constructor(props){
     super(props);
@@ -34,12 +28,20 @@ class App extends Component {
       header_title: 'This is my React Blog',
       intro: 'Documenting My ReactJS Journey',
       posts: [],
-      loading: true
+      loading: true,
+      user: {
+        email: 'mcgiver.niles@gmail.com',
+        password : 'correcthorsebatterystaple'
+      }
     }
     this.updateAppState = this.updateAppState.bind(this);
   }
 
   componentDidMount(){
+    base.authWithPassword({
+      email    : this.state.user.email,
+      password :  this.state.user.password
+    }, authHandler);
     this.ref  = base.syncState(`/posts`, {
       context: this,
       state: 'posts',

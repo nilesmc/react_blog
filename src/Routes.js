@@ -10,9 +10,9 @@ import NotFound from './components/NotFound';
 const Routes = (props) => (
   <Router {...props} >
     <Route path="/" component={App} >
-      <IndexRoute component={BlogLayout} key='1'/>
-      <Route path="login" component={Login} key='2' />
-      <Route path="contact" component={Contact} key='3' />
+      <IndexRoute component={BlogLayout} />
+      <Route path="login" component={Login} />
+      <Route path="contact" component={Contact} />
     </Route>
     <Route path="*" component={NotFound} />
   </Router>
