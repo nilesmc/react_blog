@@ -1,25 +1,7 @@
 import React, { Component } from 'react';
 import NewLayout from './components/NewLayout';
-import Rebase from 're-base';
+import Base from './helpers/Auth';
 import './App.css';
-
-// Initialize Firebase
-var base = Rebase.createClass({
-  apiKey: "AIzaSyB4A8BMdNm_6l4coXFO5txGqdOJ2JmOHa8",
-  authDomain: "reactblog-65b17.firebaseapp.com",
-  databaseURL: "https://reactblog-65b17.firebaseio.com",
-  storageBucket: "reactblog-65b17.appspot.com",
-  messagingSenderId: "995756090207"
-});
-// firebase.initializeApp(config);
-
-var authHandler = function(error, user) {
-  if(error) {
-    console.log(error, user);
-  } else {
-    console.log('success');
-  }
-};
 
 class App extends Component {
   constructor(props){
@@ -38,11 +20,12 @@ class App extends Component {
   }
 
   componentDidMount(){
-    base.authWithPassword({
-      email    : this.state.user.email,
-      password :  this.state.user.password
-    }, authHandler);
-    this.ref  = base.syncState(`/posts`, {
+    // base.authWithPassword({
+    //   email    : this.state.user.email,
+    //   password :  this.state.user.password
+    // }, authHandler);
+
+    this.ref  = Base.syncState(`/posts`, {
       context: this,
       state: 'posts',
       then() {

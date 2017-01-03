@@ -7,9 +7,9 @@ import '../App.css';
 
 class NewLayout extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render(){
     let loadingPage = this.props.pageData.loading
