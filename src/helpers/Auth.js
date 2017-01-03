@@ -12,8 +12,8 @@ const authHandler = function(error, user) {
 };
 
 Base.authWithPassword({
-    email: 'mcgiver.niles@gmail.com',
-    password : 'correcthorsebatterystaple'
+    email: '',
+    password : ''
   }, authHandler);
 
 export default Base
