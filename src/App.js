@@ -14,6 +14,7 @@ var base = Rebase.createClass({
 // firebase.initializeApp(config);
 
 var authHandler = function(error, user) {
+  debugger;
   if(error) {
     console.log(error, user);
   } else {
@@ -49,6 +50,7 @@ class App extends Component {
         this.setState({loading: false})
       }
     });
+    debugger
   }
 
   updateAppState(currentPosts) {
