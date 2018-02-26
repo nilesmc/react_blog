@@ -13,26 +13,39 @@ class Input extends React.Component {
   }
 
   render(){
-    let input;
-    if (this.props.inputField !== 'text') {
-      input = (
-       <input
+    return this.props.inputField !== 'text' ? (
+      <input
         type="text"
         value={this.props.inputData}
         onChange={this.updateInput}
-        />
-      );
-    } else {
-      input = (
-        <textarea
-          value={this.props.inputData}
-          onChange={this.updateInput}
-        />
-      );
-    }
-    return (
-      input
-    );
+      />
+    ) : (
+      <textarea
+        value={this.props.inputData}
+        onChange={this.updateInput}
+      />
+    )
+
+
+
+    // let input;
+    // if (this.props.inputField !== 'text') {
+    //   input = (
+    //    <input
+    //     type="text"
+    //     value={this.props.inputData}
+    //     onChange={this.updateInput}
+    //     />
+    //   );
+    // } else {
+    //   input = (
+    //     <textarea
+    //       value={this.props.inputData}
+    //       onChange={this.updateInput}
+    //     />
+    //   );
+    // }
+    // return input;
   }
 }
 
