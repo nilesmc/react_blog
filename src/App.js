@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NewLayout from './components/NewLayout';
 // import { auth } from './base';
 import './App.css';
-import { database } from './constants/firebase'
+import { postsRef } from './constants/firebase'
 
 class App extends Component {
   constructor(props){
@@ -22,17 +22,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    // base.authWithPassword({
-    //   email    : this.state.user.email,
-    //   password :  this.state.user.password
-    // }, authHandler);
-
-    // base.auth().signInWithEmailAndPassword(this.state.user.email, this.state.user.password).then(user => {
-    //   //
-    //   console.log('toot');
-    //   console.log(user);
-    // });
-
 
     // this.ref  = base.syncState(`/posts`, {
     //   context: this,
@@ -42,28 +31,25 @@ class App extends Component {
     //   }
     // });
 
+    // const postsRef = database.ref('posts');
 
-
-    const postsRef = database.ref('posts');
-
-    debugger
 
     postsRef.on('value', (snapshot) => {
       let posts = snapshot.val();
-      let newState = [];
-      for (let post in posts) {
-        newState.push({
-          id: post,
-          title: posts[post].title,
-          user: posts[post].user
-        });
-      }
+      let newState = Object.keys(posts || {}).map(key => {
+        return {
+          id: key,
+          subject: posts[key].subject,
+          links: posts[key].links,
+          text: posts[key].text
+        }
+      })
+
       this.setState({
+        loading: false,
         posts: newState
       });
     });
-
-    debugger
 
     console.log(this.state)
   }
