@@ -1,26 +1,8 @@
 import React, { Component } from 'react';
 import NewLayout from './components/NewLayout';
-import Rebase from 're-base';
+// import { auth } from './base';
 import './App.css';
-
-// Initialize Firebase
-var base = Rebase.createClass({
-  apiKey: "AIzaSyB4A8BMdNm_6l4coXFO5txGqdOJ2JmOHa8",
-  authDomain: "reactblog-65b17.firebaseapp.com",
-  databaseURL: "https://reactblog-65b17.firebaseio.com",
-  storageBucket: "reactblog-65b17.appspot.com",
-  messagingSenderId: "995756090207"
-});
-// firebase.initializeApp(config);
-
-var authHandler = function(error, user) {
-  debugger;
-  if(error) {
-    console.log(error, user);
-  } else {
-    console.log('success');
-  }
-};
+import { database } from './constants/firebase'
 
 class App extends Component {
   constructor(props){
@@ -35,22 +17,55 @@ class App extends Component {
         password : 'correcthorsebatterystaple'
       }
     }
+
     this.updateAppState = this.updateAppState.bind(this);
   }
 
   componentDidMount(){
-    base.authWithPassword({
-      email    : this.state.user.email,
-      password :  this.state.user.password
-    }, authHandler);
-    this.ref  = base.syncState(`/posts`, {
-      context: this,
-      state: 'posts',
-      then() {
-        this.setState({loading: false})
-      }
-    });
+    // base.authWithPassword({
+    //   email    : this.state.user.email,
+    //   password :  this.state.user.password
+    // }, authHandler);
+
+    // base.auth().signInWithEmailAndPassword(this.state.user.email, this.state.user.password).then(user => {
+    //   //
+    //   console.log('toot');
+    //   console.log(user);
+    // });
+
+
+    // this.ref  = base.syncState(`/posts`, {
+    //   context: this,
+    //   state: 'posts',
+    //   then() {
+    //     this.setState({loading: false})
+    //   }
+    // });
+
+
+
+    const postsRef = database.ref('posts');
+
     debugger
+
+    postsRef.on('value', (snapshot) => {
+      let posts = snapshot.val();
+      let newState = [];
+      for (let post in posts) {
+        newState.push({
+          id: post,
+          title: posts[post].title,
+          user: posts[post].user
+        });
+      }
+      this.setState({
+        posts: newState
+      });
+    });
+
+    debugger
+
+    console.log(this.state)
   }
 
   updateAppState(currentPosts) {
@@ -59,7 +74,12 @@ class App extends Component {
 
   render() {
     return (
-      <NewLayout pageData={this.state} updateAppState={this.updateAppState} children={this.props.children}/>
+      <NewLayout
+        pageData={this.state}
+        updateAppState={this.updateAppState}
+      >
+        {this.props.children}
+      </NewLayout>
     );
   }
 }
