@@ -40,10 +40,10 @@ class BlogLayout extends React.Component {
   }
 
   render(){
-
     let postsObjs = this.state.posts;
     let updatePosts = this.updatePosts;
     let postsMap = '';
+
     if (this.props.pageData.loading ) {
       postsMap = <h3> LOADING... </h3>
     } else {

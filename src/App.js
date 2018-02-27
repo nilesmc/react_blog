@@ -22,18 +22,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-
-    // this.ref  = base.syncState(`/posts`, {
-    //   context: this,
-    //   state: 'posts',
-    //   then() {
-    //     this.setState({loading: false})
-    //   }
-    // });
-
-    // const postsRef = database.ref('posts');
-
-
     postsRef.on('value', (snapshot) => {
       let posts = snapshot.val();
       let newState = Object.keys(posts || {}).map(key => {
@@ -51,7 +39,7 @@ class App extends Component {
       });
     });
 
-    console.log(this.state)
+    console.log(this.state);
   }
 
   updateAppState(currentPosts) {
@@ -60,12 +48,7 @@ class App extends Component {
 
   render() {
     return (
-      <NewLayout
-        pageData={this.state}
-        updateAppState={this.updateAppState}
-      >
-        {this.props.children}
-      </NewLayout>
+      <NewLayout pageData={this.state} updateAppState={this.updateAppState} children={this.props.children}/>
     );
   }
 }

@@ -21,6 +21,7 @@ class Post extends React.Component {
   render(){
     var postObj = this.props.postData;
     let linksObj = postObj.links;
+
     const linksMap = linksObj.map((post, idx) => {
       return (<Link key={idx} linkdata={linksObj[idx]}/>);
     })
