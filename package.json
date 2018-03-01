@@ -7,6 +7,8 @@
     "react-scripts": "0.7.0"
   },
   "dependencies": {
+    "aws-amplify": "^0.2.0",
+    "aws-sdk": "^2.203.0",
     "firebase": "^4.10.1",
     "radium": "^0.18.1",
     "re-base": "^2.0.0",
@@ -18,8 +20,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "react-scripts build",
+    "deploy": "npm run build&&firebase build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "deploy": "npm run build&&firebase build"
+    "eject": "react-scripts eject"
   }
 }
